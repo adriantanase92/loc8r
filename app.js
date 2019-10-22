@@ -40,4 +40,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.listen(5000, () => {
+  mongoose.connect('mongodb://localhost:27017/Loc8r', {useNewUrlParser: true});
+});
+
 module.exports = app;
