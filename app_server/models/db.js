@@ -1,5 +1,10 @@
+const config = require('../../config');
 const mongoose = require('mongoose');
-const dbURI = 'mongodb://localhost/Loc8r';
+const dbURI = config.MONGODB_URI;
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+if (config.ENV === 'production') {
+    dbURI = config.MONGODB_URI;
+}
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.connection.on('connected', () => {
